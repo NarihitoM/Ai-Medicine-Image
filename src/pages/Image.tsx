@@ -25,7 +25,7 @@ const Image = () => {
         formdata.append("file", file!);
         setloading(true);
         try {
-            const response = await axios.post("http://localhost:8000/api/image", formdata);
+            const response = await axios.post("https://ai-server-for-medicine-image.vercel.app/api/image", formdata);
             if (response.data && response.data.success) {
                 if(response.data.data.title === "It is not medicine")
                 {
