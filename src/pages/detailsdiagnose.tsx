@@ -43,7 +43,7 @@ const DetailDiagnose = () => {
                     <button onClick={() => {
                         localStorage.removeItem("datadiagnose");
                         localStorage.removeItem("imagediagnose");
-                        navigate("/");
+                        navigate("/diagnose");
                     }} className="p-1 w-full bg-blue-600 font-medium text-white rounded-lg active:translate-y-1">Back</button>
                 </div>
             </div>

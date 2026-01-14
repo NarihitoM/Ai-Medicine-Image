@@ -76,7 +76,7 @@ const Image = () => {
                     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white shadow-lg">
                         <div className="flex flex-col gap-2 items-center">
                             <span><X className="text-red-600" /></span>
-                            <p className="font-medium text-red-600">{message}</p>
+                            <p className="font-medium text-red-600 text-center">{message}</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ const Image = () => {
                     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white shadow-lg">
                         <div className="flex flex-col gap-2 items-center">
                             <span><Check className="text-green-600" /></span>
-                            <p className="font-medium text-green-600">{message}</p>
+                            <p className="font-medium text-green-600 text-center">{message}</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const Image = () => {
                <Link to="/" className="text-blue-600 font-medium">Medicine</Link>
             </div>
                 <h1 className="Font-bold text-blue-600 text-2xl font-bold">Medicine Image Analyser</h1>
-                <div className="w-1/2 md:w-auto p-5 bg-white shadow-[0_0_10px_0_blue,0_0_20px_0_blue] rounded-lg flex flex-col gap-5">
+                <div className="w-auto px-5 py-3 bg-white shadow-[0_0_10px_0_blue,0_0_20px_0_blue] rounded-lg flex flex-col gap-5">
                     <label
                         htmlFor="fileUpload"
                         className="flex w-full flex-col items-center justify-center border-2 border-dashed bg-white border-blue-500 rounded-lg p-10 cursor-pointer hover:bg-yellow-50 transition">
