@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Check, X } from "lucide-react";
 
-const Image = () => {
+const DiagnoseImage = () => {
     const [file, setfile] = useState<File | null>();
     const [image, setimage] = useState<any>();
     const [loading, setloading] = useState<boolean>();
@@ -25,26 +25,24 @@ const Image = () => {
         formdata.append("file", file!);
         setloading(true);
         try {
-            const response = await axios.post("https://ai-server-for-medicine-image.vercel.app/api/image", formdata);
+            const response = await axios.post("https://ai-server-for-medicine-image.vercel.app/api/diagnose", formdata);
             if (response.data && response.data.success) {
-                if(response.data.data.title === "It is not medicine")
-                {
+                if (response.data.data.title === "It is not diagnostics") {
                     setloading(false);
                     seterror(true);
-                    setmessage("It is not medicine.")
+                    setmessage("It is not diagnostics.")
                     setTimeout(() => {
                         seterror(false);
                     }, 3000);
                     return;
                 }
-                localStorage.setItem("data", JSON.stringify(response.data.data));
-                localStorage.setItem("image",response.data.image);
-                
+                localStorage.setItem("datadiagnose", JSON.stringify(response.data.data));
+                localStorage.setItem("imagediagnose", response.data.image);
                 setloading(false);
                 setsuccess(true);
                 setmessage(response.data.message || "Successfully uploaded")
                 setTimeout(() => {
-                    navigate("/detail");
+                    navigate("/detaildiagnose");
                     setsuccess(false);
                 }, 2000);
             }
@@ -93,15 +91,15 @@ const Image = () => {
             }
            
             <div className="h-screen flex flex-col gap-3 justify-center items-center">
-                <div className="flex flex-row justify-center items-center gap-5">
+                  <div className="flex flex-row justify-center items-center gap-5">
                <Link to="/diagnose" className="text-blue-600 font-medium ">Diagnose</Link>
                <Link to="/" className="text-blue-600 font-medium">Medicine</Link>
             </div>
-                <h1 className="Font-bold text-blue-600 text-2xl font-bold">Medicine Image Analyser</h1>
+                <h1 className="Font-bold text-blue-600 text-2xl font-bold">Diagnose Analyser</h1>
                 <div className="w-1/2 md:w-auto p-5 bg-white shadow-[0_0_10px_0_blue,0_0_20px_0_blue] rounded-lg flex flex-col gap-5">
                     <label
                         htmlFor="fileUpload"
-                        className="flex w-full flex-col items-center justify-center border-2 border-dashed bg-white border-blue-500 rounded-lg p-10 cursor-pointer hover:bg-yellow-50 transition">
+                        className="flex flex-col w-full items-center justify-center border-2 border-dashed bg-white border-blue-500 rounded-lg p-10 cursor-pointer hover:bg-yellow-50 transition">
                         <p className="text-sm text-gray-600">
                             <span className="font-semibold text-black">Click to upload</span>
                         </p>
@@ -127,4 +125,4 @@ const Image = () => {
     )
 }
 
-export default Image;
+export default DiagnoseImage;

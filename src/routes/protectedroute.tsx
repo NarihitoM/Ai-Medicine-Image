@@ -9,7 +9,7 @@ interface Props {
 const Protectedroute = ({ children }: Props) => {
     const data = localStorage.getItem("data");
     if (!data) {
-        return <Navigate to="/medicine" replace />
+        return <Navigate to="/" replace />
     }
     else {
         return children;
